@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Our Little Universe ❤️</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:linear-gradient(135deg,#180018,#43002f,#16001f);
+ color:white;
+ text-align:center;
+ overflow-x:hidden;
+}
+button{
+ border:0;
+ padding:13px 22px;
+ margin:7px;
+ border-radius:30px;
+ background:#ff4f9a;
+ color:white;
+ font-size:16px;
+ cursor:pointer;
+ box-shadow:0 5px 15px #0007;
+ transition:.2s;
+}
+button:hover{transform:scale(1.07);background:#ff79b2}
+.screen{display:none;min-height:100vh;padding:40px 20px}
+.active{display:block}
+h1{font-size:42px}
+h2{font-size:30px}
+.card{
+ max-width:700px;
+ margin:20px auto;
+ padding:28px;
+ border-radius:25px;
+ background:#ffffff12;
+ border:1px solid #ffffff25;
+ backdrop-filter:blur(10px);
+ box-shadow:0 10px 35px #0006;
+}
+.heart{
+ position:fixed;
+ animation:fall linear infinite;
+ pointer-events:none;
+ opacity:.7;
+}
+@keyframes fall{
+ 0%{transform:translateY(-10vh) rotate(0)}
+ 100%{transform:translateY(110vh) rotate(360deg)}
+}
+.timeline{
+ text-align:left;
+ max-width:650px;
+ margin:auto;
+}
+.chapter{
+ padding:20px;
+ margin:15px 0;
+ border-left:4px solid #ff4f9a;
+ background:#ffffff0b;
+ border-radius:10px;
+}
+.game{
+ max-width:650px;
+ margin:25px auto;
+ padding:25px;
+ background:#ffffff10;
+ border-radius:25px;
+}
+#heartGameArea{
+ height:300px;
+ position:relative;
+ overflow:hidden;
+ border:1px solid #ffffff22;
+ border-radius:20px;
+}
+.catchHeart{
+ position:absolute;
+ font-size:35px;
+ cursor:pointer;
+}
+#maze{
+ font-size:50px;
+ margin:30px;
+}
+.bigHeart{
+ font-size:100px;
+ animation:pulse 1s infinite;
+}
+@keyframes pulse{
+ 50%{transform:scale(1.2)}
+}
+input{
+ padding:13px;
+ border-radius:20px;
+ border:0;
+ text-align:center;
+ font-size:20px;
+ width:150px;
+}
+.hidden{display:none}
+.choice.correct{background:#37c978}
+.choice.wrong{background:#d83b64}
+#finalMessage{
+ line-height:1.8;
+ font-size:18px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating hearts -->
+<script>
+for(let i=0;i<25;i++){
+ let h=document.createElement("div");
+ h.className="heart";
+ h.innerHTML=["❤️","💕","💗","💖","💘"][Math.floor(Math.random()*5)];
+ h.style.left=Math.random()*100+"%";
+ h.style.animationDuration=(5+Math.random()*8)+"s";
+ h.style.animationDelay=Math.random()*5+"s";
+ h.style.fontSize=(12+Math.random()*20)+"px";
+ document.body.appendChild(h);
+}
+</script>
+
+<!-- HOME -->
+<section id="home" class="screen active">
+ <h1>💗 Our Little Universe 💗</h1>
+
+ <div class="card">
+  <div class="bigHeart">❤️</div>
+  <h2>1 Year & 11 Months</h2>
+  <p>23 October 2024 → 23 September 2026</p>
+  <p>
+   From two strangers in an unknown chat...
+   to becoming each other's everything. 🥹
+  </p>
+
+  <button onclick="show('story')">
+   📖 Enter Our Story
+  </button>
+
+  <button onclick="show('games')">
+   🎮 Enter Our Little Games
+  </button>
+ </div>
+</section>
+
+
+<!-- STORY -->
+<section id="story" class="screen">
+ <h1>📖 Our Story</h1>
+
+ <div class="timeline">
+
+  <div class="chapter">
+   <h2>Chapter 1 — The Unknown Chat 🌙</h2>
+   <p>
+    Once upon a time, there was a lonely guy who entered
+    an unknown chat...
+   </p>
+   <p>
+    He had absolutely no idea that one random conversation
+    would eventually change his world.
+   </p>
+  </div>
+
+  <div class="chapter">
+   <h2>Chapter 2 — You Came Into My Life 💕</h2>
+   <p>
+    Then you came along, hubby.
+   </p>
+   <p>
+    Slowly, you became my friend, my comfort,
+    my favourite person and my everything.
+   </p>
+  </div>
+
+  <div class="chapter">
+   <h2>Chapter 3 — Master & Sub 🤭</h2>
+   <p>
+    Somewhere along the way, our little playful
+    Master-and-sub dynamic began.
+   </p>
+   <p>
+    And yes... your sub is still proudly reporting for duty. 🫡🤭
+   </p>
+  </div>
+
+  <div class="chapter">
+   <h2>Chapter 4 — My Wifey ❤️</h2>
+   <p>
+    What started as two strangers became something
+    much more precious.
+   </p>
+   <p>
+    You became my wifey, my hubby, my master,
+    my best friend and my favourite human.
+   </p>
+  </div>
+
+  <div class="chapter">
+   <h2>Chapter 5 — Us 🥹</h2>
+   <p>
+    And here we are...
+   </p>
+   <p>
+    <b>1 year and 11 months of us. ❤️</b>
+   </p>
+  </div>
+
+ </div>
+
+ <button onclick="show('games')">🎮 Play Our Games</button>
+ <button onclick="show('home')">🏠 Home</button>
+</section>
+
+
+<!-- GAMES -->
+<section id="games" class="screen">
+
+<h1>🎮 Our Little Games 🤭</h1>
+
+<!-- GAME 1 -->
+<div class="game">
+<h2>💋 Game 1 — Catch My Kiss</h2>
+<p>Catch 5 hearts to receive your kiss! 🤭</p>
+
+<div id="heartGameArea"></div>
+<p id="kissScore">Hearts: 0 / 5</p>
+<button onclick="startHearts()">Start ❤️</button>
+<p id="kissResult"></p>
+</div>
+
+
+<!-- GAME 2 -->
+<div class="game">
+<h2>🫡 Game 2 — Master's Mission</h2>
+
+<p>Your master has arrived. 🤭</p>
+<p>Complete your missions:</p>
+
+<button onclick="mission(this)">❤️ Love Master</button>
+<button onclick="mission(this)">🫶 Give Master a Hug</button>
+<button onclick="mission(this)">💋 Give Master a Kiss</button>
+<button onclick="mission(this)">🫡 Obey Master</button>
+
+<p id="missionResult"></p>
+</div>
+
+
+<!-- GAME 3 -->
+<div class="game">
+<h2>💕 Game 3 — How Well Do You Know Us?</h2>
+
+<p>Where did our story begin?</p>
+
+<button class="choice" onclick="quiz(this,false)">At school</button>
+<button class="choice" onclick="quiz(this,true)">An unknown chat</button>
+<button class="choice" onclick="quiz(this,false)">At a café</button>
+
+<p id="quizResult"></p>
+</div>
+
+
+<!-- GAME 4 -->
+<div class="game">
+<h2>💌 Game 4 — Love Letter</h2>
+
+<p>Click the envelope.</p>
+
+<button onclick="openLetter()">💌 Open My Secret Letter</button>
+
+<p id="letter" class="hidden">
+You were never supposed to be just a random person
+from an unknown chat...
+
+You became my favourite notification,
+my comfort, my chaos and my home. ❤️
+
+And somehow...
+I fell completely for you. 🤭💕
+</p>
+</div>
+
+
+<!-- GAME 5 -->
+<div class="game">
+<h2>❤️ Game 5 — Complete Our Heart</h2>
+
+<p>Click the heart pieces in order.</p>
+
+<button onclick="heartPiece(1)">💗</button>
+<button onclick="heartPiece(2)">💖</button>
+<button onclick="heartPiece(3)">💘</button>
+<button onclick="heartPiece(4)">💝</button>
+
+<p id="heartResult"></p>
+</div>
+
+
+<!-- GAME 6 -->
+<div class="game">
+<h2>😳 Game 6 — Make Your Sub Blush</h2>
+
+<p>Choose your weapon, Master 🤭</p>
+
+<button onclick="blush('compliment')">🥰 Compliment</button>
+<button onclick="blush('tease')">😏 Tease</button>
+<button onclick="blush('kiss')">💋 Kiss</button>
+<button onclick="blush('hug')">🫂 Hug</button>
+
+<h2 id="blushResult"></h2>
+</div>
+
+
+<!-- GAME 7 -->
+<div class="game">
+<h2>🧩 Game 7 — Find Your Person</h2>
+
+<p>Find ❤️ before the timer ends!</p>
+
+<div id="maze">🌑 🌑 🌑 🌑 🌑</div>
+
+<button onclick="findPerson()">🔍 Search</button>
+
+<p id="mazeResult"></p>
+</div>
+
+
+<!-- GAME 8 -->
+<div class="game">
+<h2>🎁 Game 8 — Mystery Box</h2>
+
+<button onclick="mystery()">🎁 Open</button>
+
+<h2 id="mysteryResult"></h2>
+</div>
+
+
+<!-- GAME 9 -->
+<div class="game">
+<h2>🫡 Game 9 — Master's Final Command</h2>
+
+<p>Choose one:</p>
+
+<button onclick="command('yes')">Yes, Master 🤭</button>
+<button onclick="command('love')">I love you, Master ❤️</button>
+<button onclick="command('forever')">Forever yours ♾️</button>
+
+<p id="commandResult"></p>
+</div>
+
+
+<!-- GAME 10 -->
+<div class="game">
+<h2>🔐 Game 10 — The Secret Lock</h2>
+
+<p>
+There is one number that belongs to my hubby. 🤭
+</p>
+
+<input id="secretCode" type="password" placeholder="••">
+<br>
+
+<button onclick="unlock()">🔓 Unlock</button>
+
+<p id="lockResult"></p>
+
+<div id="finalUnlock" class="hidden">
+<button onclick="show('final')">
+ 💌 Open The Final Surprise
+</button>
+</div>
+</div>
+
+<button onclick="show('home')">🏠 Home</button>
+
+</section>
+
+
+<!-- FINAL -->
+<section id="final" class="screen">
+
+<h1>💗 You Made It, Hubby 💗</h1>
+
+<div class="card" id="finalMessage">
+
+<div class="bigHeart">❤️</div>
+
+<h2>Happy 1 Year & 11 Months, My Hubby 🥹</h2>
+
+<p>
+From a completely unknown chat...
+to becoming my friend,
+my love,
+my master,
+my wife,
+my hubby,
+and my everything.
+</p>
+
+<p>
+I never knew that one random conversation
+could bring someone so special into my life.
+</p>
+
+<p>
+Thank you for choosing me,
+loving me,
+teasing me,
+supporting me,
+and being my person. ❤️
+</p>
+
+<h2>
+I love you, my hubby. ❤️<br>
+I love you, my master. 🤭<br>
+I love you, my wifey. 🥹<br>
+I love you, my everything. ♾️
+</h2>
+
+<p>
+And yes...
+your little sub is still here reporting for duty. 🫡🤭
+</p>
+
+<h2>
+23 October 2024 ❤️<br>
+↓<br>
+23 September 2026
+</h2>
+
+<p>
+<b>
+Happy 1 Year & 11 Months to us. 💕
+</b>
+</p>
+
+<p>
+This isn't the end of our story...
+it's just another beautiful chapter. 📖❤️
+</p>
+
+<div class="bigHeart">💗</div>
+
+<h2>Forever Us. ♾️</h2>
+
+</div>
+
+<button onclick="show('home')">🏠 Start Again</button>
+
+</section>
+
+
+<script>
+
+function show(id){
+ document.querySelectorAll(".screen")
+ .forEach(s=>s.classList.remove("active"));
+
+ document.getElementById(id).classList.add("active");
+
+ window.scrollTo(0,0);
+}
+
+
+/* GAME 1 */
+
+let score=0;
+let heartTimer;
+
+function startHearts(){
+
+ score=0;
+
+ document.getElementById("kissScore")
+ .innerText="Hearts: 0 / 5";
+
+ document.getElementById("kissResult")
+ .innerText="";
+
+ spawnHeart();
+}
+
+function spawnHeart(){
+
+ const area=document.getElementById("heartGameArea");
+
+ const h=document.createElement("div");
+
+ h.className="catchHeart";
+ h.innerHTML=["❤️","💗","💖","💘"][Math.floor(Math.random()*4)];
+
+ h.style.left=Math.random()*85+"%";
+ h.style.top=Math.random()*80+"%";
+
+ h.onclick=function(){
+
+  score++;
+
+  document.getElementById("kissScore")
+  .innerText="Hearts: "+score+" / 5";
+
+  h.remove();
+
+  if(score>=5){
+
+   document.getElementById("kissResult")
+   .innerText=
+   "💋 Kiss unlocked! Your sub gets a kiss from Master 🤭❤️";
+
+  }else{
+
+   spawnHeart();
+
+  }
+ };
+
+ area.appendChild(h);
+}
+
+
+/* GAME 2 */
+
+let missions=0;
+
+function mission(btn){
+
+ btn.disabled=true;
+ missions++;
+
+ if(missions>=4){
+
+  document.getElementById("missionResult")
+  .innerText=
+  "🫡 Mission complete! Your loyal little sub is reporting: I love you, Master 🤭❤️";
+
+ }else{
+
+  document.getElementById("missionResult")
+  .innerText=
+  "Mission accepted, Master 🫡❤️";
+
+ }
+}
+
+
+/* GAME 3 */
+
+function quiz(btn,correct){
+
+ if(correct){
+
+  btn.classList.add("correct");
+
+  document.getElementById("quizResult")
+  .innerText=
+  "Correct! 🤭 Our story began in that unknown chat ❤️";
+
+ }else{
+
+  btn.classList.add("wrong");
+
+  document.getElementById("quizResult")
+  .innerText="Nope! Try again 😜";
+
+ }
+}
+
+
+/* GAME 4 */
+
+function openLetter(){
+
+ document.getElementById("letter")
+ .classList.remove("hidden");
+
+}
+
+
+/* GAME 5 */
+
+let nextHeart=1;
+
+function heartPiece(n){
+
+ if(n===nextHeart){
+
+  nextHeart++;
+
+  if(nextHeart>4){
+
+   document.getElementById("heartResult")
+   .innerText=
+   "❤️ Heart completed! Just like us — two pieces becoming one little universe. 🥹";
+
+  }else{
+
+   document.getElementById("heartResult")
+   .innerText="Good! Keep going 💕";
+
+  }
+
+ }else{
+
+  document.getElementById("heartResult")
+  .innerText="Wrong piece 🤭 Try again!";
+
+ }
+}
+
+
+/* GAME 6 */
+
+function blush(type){
+
+ let text="";
+
+ if(type==="compliment")
+ text="😳 Master complimented you... SYSTEM OVERHEATING ❤️";
+
+ if(type==="tease")
+ text="😳 Stop teasing me, Master! 🤭";
+
+ if(type==="kiss")
+ text="💋 One kiss received... blushing level: 100%";
+
+ if(type==="hug")
+ text="🫂 Master hug received. Sub is happy. ❤️";
+
+ document.getElementById("blushResult")
+ .innerText=text;
+}
+
+
+/* GAME 7 */
+
+function findPerson(){
+
+ let words=[
+  "🌑 🌑 🌑 🌑 ❤️",
+  "🌑 ❤️ 🌑 🌑 🌑",
+  "🌑 🌑 ❤️ 🌑 🌑",
+  "❤️ 🌑 🌑 🌑 🌑"
+ ];
+
+ document.getElementById("maze")
+ .innerText=
+ words[Math.floor(Math.random()*words.length)];
+
+ document.getElementById("mazeResult")
+ .innerText=
+ "You found your person! ❤️";
+
+}
+
+
+/* GAME 8 */
+
+function mystery(){
+
+ const messages=[
+  "💌 Secret message: You are my favourite person.",
+  "💋 Reward unlocked: One virtual kiss.",
+  "🫂 Reward unlocked: Unlimited hugs.",
+  "🤭 Your sub has been caught blushing.",
+  "♾️ Reward: Forever with you."
+ ];
+
+ document.getElementById("mysteryResult")
+ .innerText=
+ messages[Math.floor(Math.random()*messages.length)];
+
+}
+
+
+/* GAME 9 */
+
+function command(type){
+
+ let text="";
+
+ if(type==="yes")
+ text="🫡 Yes, Master! Mission accepted 🤭";
+
+ if(type==="love")
+ text="❤️ Master has successfully received unlimited love.";
+
+ if(type==="forever")
+ text="♾️ Forever yours. No escape from love. 🤭❤️";
+
+ document.getElementById("commandResult")
+ .innerText=text;
+
+}
+
+
+/* SECRET CODE */
+
+function unlock(){
+
+ const code=document
+ .getElementById("secretCode").value;
+
+ if(code==="17"){
+
+  document.getElementById("lockResult")
+  .innerHTML=
+  "🔓 UNLOCKED! ❤️<br><br>"+
+  "17 — your favourite number. 🤭<br>"+
+  "Only my hubby knows the secret.";
+
+  document.getElementById("finalUnlock")
+  .classList.remove("hidden");
+
+ }else{
+
+  document.getElementById("lockResult")
+  .innerText=
+  "❌ Wrong number, hubby 🤭 Try again!";
+
+ }
+
+}
+
+</script>
+
+</body>
+</html>
